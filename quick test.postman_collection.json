@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "a3d06fa3-148d-436f-910c-a4b9276c049b",
+		"name": "quick test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43607106",
+		"_collection_link": "https://www.postman.com/heberthvargas/quick-test/collection/x8nqvz4/quick-test?action=share&source=collection_link&creator=43607106"
+	},
+	"item": [
+		{
+			"name": "http://0.0.0.0:8000/apiV1/users/",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/apiV1/users/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"apiV1",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:8000/apiV1/restaurants/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:authorization-secret}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/apiV1/restaurants/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"apiV1",
+						"restaurants",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:8000/apiV1/restaurants/menu_items/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/apiV1/restaurants/menu_items/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"apiV1",
+						"restaurants",
+						"menu_items",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:8000/apiV1/restaurants/detail/1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/apiV1/restaurants/detail/1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"apiV1",
+						"restaurants",
+						"detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:8000/apiV1/restaurants/create/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/apiV1/restaurants/create/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"apiV1",
+						"restaurants",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://0.0.0.0:8000/apiV1/restaurants/update/1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/apiV1/restaurants/update/1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"apiV1",
+						"restaurants",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " http://0.0.0.0:8000/apiV1/restaurants/delete/1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/apiV1/restaurants/delete/1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"apiV1",
+						"restaurants",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " http://0.0.0.0:8000/apiV1/users/change_password/1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/apiV1/users/change_password/1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"apiV1",
+						"users",
+						"change_password",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
