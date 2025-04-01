@@ -1,0 +1,208 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$EU8TONSImiltfukZGugAmB$zJDZ58pE/E9uKuiYkXzcgIpbGJ6ZaYTDmn/KdVPms4Q=",
+        "last_login": "2025-04-01T06:03:40.799Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-03-31T04:39:53.686Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$Mksjct8jnvwpvYQ1k36Gna$MFJjnZdw9Mz35gJTgOnPFfTSLM6ZyrqpTjTHaPlxKec=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "pepito",
+        "first_name": "pepito",
+        "last_name": "perez",
+        "email": "pepito@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-31T04:46:31Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$vLiMpMML6DmO4hqldSVkUQ$u9UCVEfO+krE3fSFSghHSqZD4cGdPHZLWGBnISDgXMg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "maria",
+        "first_name": "maria",
+        "last_name": "vargas",
+        "email": "maria@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-31T05:04:45Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$hTfDV9AZt0a8s5b21TgyY2$lk9MmElNpOhIPSm1SzxWz0WyZS3Jd6VqqbOPzAKsMk8=",
+        "last_login": "2025-03-31T08:31:54.783Z",
+        "is_superuser": true,
+        "username": "jose",
+        "first_name": "Jose",
+        "last_name": "Perez Urrutia",
+        "email": "jose@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-03-31T05:10:42Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "restaurants.restaurant",
+    "pk": 1,
+    "fields": {
+        "created_at": "2025-03-31T00:00:00Z",
+        "updated_at": "2025-03-31T00:00:00Z",
+        "active": true,
+        "name": "la cucharita",
+        "rating": "4.00",
+        "status": "abierto",
+        "category": "criolla"
+    }
+},
+{
+    "model": "restaurants.restaurant",
+    "pk": 2,
+    "fields": {
+        "created_at": "2025-03-31T00:00:00Z",
+        "updated_at": "2025-03-31T00:00:00Z",
+        "active": true,
+        "name": "leños",
+        "rating": "5.00",
+        "status": "abierto",
+        "category": "parrila"
+    }
+},
+{
+    "model": "restaurants.place",
+    "pk": 1,
+    "fields": {
+        "address": "cra 34 # 45 1",
+        "latitude": "43.00000000000",
+        "longitude": "32.00000000000",
+        "restaurant": 1
+    }
+},
+{
+    "model": "restaurants.place",
+    "pk": 2,
+    "fields": {
+        "address": "cra 39 # 82 34",
+        "latitude": "45.00000000000",
+        "longitude": "12.00000000000",
+        "restaurant": 2
+    }
+},
+{
+    "model": "restaurants.menu_item",
+    "pk": 1,
+    "fields": {
+        "created_at": "2025-04-01T07:35:16.930Z",
+        "updated_at": "2025-04-01T07:35:16.930Z",
+        "active": false,
+        "restaurant": 1,
+        "name": "estofado",
+        "description": "estofado de carne muy rico",
+        "price": "20500.00",
+        "preparation_time": 3,
+        "available": true,
+        "category": "parrila",
+        "image_url": "uploads/estofado-de-res-1200x720.webp"
+    }
+},
+{
+    "model": "users.profile",
+    "pk": 1,
+    "fields": {
+        "phone": "3160187380",
+        "default_address": "cra 34 # 45 65",
+        "updated_at": "2025-03-31",
+        "typology": "customer",
+        "restaurant": [
+            1
+        ]
+    }
+},
+{
+    "model": "users.profile",
+    "pk": 2,
+    "fields": {
+        "phone": "3149238343",
+        "default_address": "cra 34 # 54 12",
+        "updated_at": "2025-03-31",
+        "typology": "2",
+        "restaurant": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "users.profile",
+    "pk": 3,
+    "fields": {
+        "phone": "3148738482",
+        "default_address": "cra 43 # 45 65",
+        "updated_at": "2025-03-31",
+        "typology": "dealer",
+        "restaurant": [
+            1
+        ]
+    }
+},
+{
+    "model": "users.profile",
+    "pk": 4,
+    "fields": {
+        "phone": "3148738482",
+        "default_address": "cra 45 # 54 92",
+        "updated_at": "2025-03-31",
+        "typology": "cu",
+        "restaurant": [
+            1
+        ]
+    }
+},
+{
+    "model": "orders.delivery",
+    "pk": 1,
+    "fields": {
+        "address": "cra 34 # 84 32",
+        "special_instructions": "casa de 3 pisos",
+        "estimated_time": "2025-04-01T06:36:47Z"
+    }
+},
+{
+    "model": "orders.order",
+    "pk": 1,
+    "fields": {
+        "created_at": "2025-04-01T06:37:35.773Z",
+        "updated_at": "2025-04-01T06:37:35.773Z",
+        "active": true,
+        "customer": 2,
+        "restaurant": 1,
+        "status": "en espera",
+        "total_amount": "4500.00"
+    }
+}
+]
