@@ -5,9 +5,9 @@ counter = r.set("counter", "0")
 
 def counter(func):
 	def wrapper(*args, **kw):
-		requests = r.incr("counter")
-		print(requests)
-		func(*args, **kw)
+		req = r.incr("counter")
+		print(req)
+		return func(*args, **kw)
 	return wrapper
 	
 def timeit(method):
