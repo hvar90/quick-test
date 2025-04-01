@@ -14,6 +14,11 @@ abrir el navegador e ir a la direccion [http://0.0.0.0:8000/apiV1/token/](http:/
 
 el usuario admin tiene contraseña admin124
 
+en Settings Debug debe estar en True para que se pueda ver los css
+```bash
+DEBUG = True
+```
+
 se puede ir a http://0.0.0.0:8000/admin/ para agregar elementos a la base de datos pero se deben agregar los modelos 
 ```bash
 admin.site.register(Restaurant)
@@ -25,4 +30,4 @@ admin.site.register(Delivery)
 admin.site.register(Profile)
 ```
 
-se puede apagar los servidores presionando  CONTROL-C
+se pueden apagar los servidores presionando  CONTROL-C
