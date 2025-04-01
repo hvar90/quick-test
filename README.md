@@ -14,7 +14,7 @@ abrir el navegador e ir a la direccion [http://0.0.0.0:8000/apiV1/token/](http:/
 
 el usuario admin tiene contraseña admin124
 
-en Settings Debug debe estar en True para que se pueda ver los css
+en Settings Debug debe estar en True para que se pueda ver los css de la pagina de administrador
 ```bash
 DEBUG = True
 ```
