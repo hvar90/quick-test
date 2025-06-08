@@ -1,7 +1,11 @@
 Django==4.2.20
+drf-spectacular
 psycopg2>=2.8
 djangorestframework
 djangorestframework-simplejwt
 django-filter
+django-injector
 redis[hiredis]
+pandas
 celery
+

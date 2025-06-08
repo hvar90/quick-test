@@ -18,9 +18,9 @@ class Order(models.Model):
 	updated_at = models.DateTimeField(auto_now=True,db_index=True)
 	active = models.BooleanField(default=False)
 	customer = models.ForeignKey("users.Profile",
-	 on_delete=models.CASCADE)
+	 on_delete=models.CASCADE,related_name='customers')
 	restaurant = models.ForeignKey("restaurants.Restaurant",
-	 on_delete=models.CASCADE)
+	 on_delete=models.CASCADE,related_name='orders')
 	status = models.CharField(max_length=20)
 	total_amount = models.DecimalField(max_digits=10,decimal_places=2)
 	

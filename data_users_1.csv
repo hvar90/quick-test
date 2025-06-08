@@ -1,0 +1,3 @@
+is_active;default_address;typology;first_name;last_name;email;phone;username;password
+true;Car 34 # 45 65;de;Josh;Pastrana;cami@gmail.com;3145037861;josh;josh23
+false;Car 34 # 45 65;cu;Carla;Perez;josefina@gmail.com;3156720954;carlita;carlita123

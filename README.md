@@ -10,7 +10,7 @@ ejecutar el siguiente comando para iniciar los servidores de base de datos, serv
   sudo docker compose up
 ```
 
-abrir el navegador e ir a la direccion [http://0.0.0.0:8000/apiV1/token/](http://0.0.0.0:8000/apiV1/token/) para obtener token de autenticacion
+abrir el navegador e ir a la direccion [http://0.0.0.0:8000/apiv1/token/](http://0.0.0.0:8000/apiv1/token/) para obtener token de autenticacion
 
 el usuario admin tiene contraseña admin124
 

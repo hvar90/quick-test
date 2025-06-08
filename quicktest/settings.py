@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-i9)*lu881f0t(1kkjiymb^fy7s(1v!m+#4m8oezuujyt6l9g0%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+AUTH_USER_MODEL = "users.User"
 
 # Application definition
 
@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'django_filters'
+    'django_filters',
+    'drf_spectacular',
+    'django_injector'
+    #'django-rest-swagger'
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_injector.apps.inject_request_middleware',
 ]
 
 ROOT_URLCONF = 'quicktest.urls'
@@ -76,15 +80,47 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'quicktest.wsgi.application'
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-		'rest_framework_simplejwt.authentication.JWTAuthentication',
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Library API',
+    'DESCRIPTION': 'A simple API for managing books in a library',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SERVERS': [
+        {'url': 'http://localhost:8000', 'description': 'Local Development server'},
+        {'url': 'https://api.example.com', 'description': 'Production server'},
     ],
+    'TAGS': [
+        {'name': 'books', 'description': 'Book operations'},
+    ],
+    'EXTENSIONS_TO_SCHEMA_FUNCTION': lambda generator, request, public: {
+        'x-speakeasy-retries': {
+            'strategy': 'backoff',
+            'backoff': {
+                'initialInterval': 500,
+                'maxInterval': 60000,
+                'maxElapsedTime': 3600000,
+                'exponent': 1.5,
+            },
+            'statusCodes': ['5XX'],
+            'retryConnectionErrors': True,
+        }
+    }
+}
+REST_FRAMEWORK = {
+	'DEFAULT_AUTHENTICATION_CLASSES': (
+	#'rest_framework.authentication.BasicAuthentication',
+	'rest_framework.authentication.SessionAuthentication',
+	),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+		# 'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # ],
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
     'DEFAULT_PAGINATION_CLASS': 'core.pagination.StandardResultsSetPagination',  
+     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    #"DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
 }
 
 SIMPLE_JWT = {
@@ -92,6 +128,13 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
+REDIS_HOST = os.environ.get('REDIS_HOST')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND')
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
+#CELERY_IMPORTS = ['quicktest',]
+#broker_url = 'redis://localhost:6379/0'
+#CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://0.0.0.0:6379/redis%3A6379/0')
+#CELERY_BROKER_URL = 'redis://0.0.0.0:6379/0' 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -139,11 +182,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = BASE_DIR+'/static/'
+
+MEDIA_ROOT  = BASE_DIR+'/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

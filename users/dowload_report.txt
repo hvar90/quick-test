@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/3582414/removing-tmp-file-after-return-httpresponse-in-django
+https://stackoverflow.com/questions/70510878/how-to-handle-file-delete-after-returning-it-has-response-in-django-rest-framewo
+https://stackoverflow.com/questions/38697529/how-to-return-generated-file-download-with-django-rest-framework
+https://stackoverflow.com/questions/21021120/checking-if-a-file-is-being-downloaded-by-python-requests-library?rq=3
+https://stackoverflow.com/questions/60514992/why-django-user-password-doesnt-encrypted-while-i-create-new-user
+pandas dataframe to serializer django
+
+https://programadorwebvalencia.com/implementando-arquitectura-limpia-en-python/
+https://www.google.com/search?q=arquitectura+limpia+python+django+rest

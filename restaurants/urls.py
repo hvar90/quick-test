@@ -17,5 +17,6 @@ urlpatterns = [
     path('menu_item/create/', views.menuItemCreate,name="create"),
     path('menu_item/update/<str:pk>/', views.menuItemUpdate,name="update"),
     path('menu_item/delete/<str:pk>/', views.menuItemDelete,name="delete"),
+    path('report_orders/<int:month>/',views.ReportOrdersAPIView.as_view(),name="report")
     
 ]

@@ -1,11 +1,17 @@
-import redis
-import time
-r = redis.Redis(host='redis', port=6379, decode_responses=True)
-counter = r.set("counter", "0")
 
-def counter(func):
-	def wrapper(*args, **kw):
-		req = r.incr("counter")
+from redis import Redis
+import time
+from django.conf import settings
+from typing import Callable, TypeVar,Callable
+
+r: Redis= Redis(host=settings.REDIS_HOST, port=6379, decode_responses=True)
+counter: bool = r.set("counter", "0")
+
+RT = TypeVar('T')
+
+def counter(func) -> Callable[..., RT]:
+	def wrapper(*args, **kw) -> RT:
+		req: int = r.incr("counter")
 		print(req)
 		return func(*args, **kw)
 	return wrapper

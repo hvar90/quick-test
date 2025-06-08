@@ -1,0 +1,3 @@
+id,created_at,updated_at,active,name,rating,status,category
+1,2025-03-31 00:00:00+00:00,2025-03-31 00:00:00+00:00,True,la cucharita,4.00,abierto,criolla
+2,2025-03-31 00:00:00+00:00,2025-03-31 00:00:00+00:00,True,leños,5.00,abierto,parrila
