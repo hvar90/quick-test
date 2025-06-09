@@ -5,10 +5,11 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-q", "-d", "postgres", "-U", "postgres" ]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
-      timeout: 5s
       retries: 5
+      start_period: 30s
+      timeout: 10s
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -47,7 +48,9 @@ services:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - REDIS_HOST=redis
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+        restart: true
       - redis
       - celery
       
