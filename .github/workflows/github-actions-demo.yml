@@ -9,7 +9,7 @@ jobs:
       db:
         image: postgres:latest
         env:
-          POSTGRES_HOST: postgres
+          POSTGRES_HOST: db
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
@@ -24,7 +24,7 @@ jobs:
         with:
           compose-file: "docker-compose.yml"
         env:
-          POSTGRES_HOST: postgres
+          POSTGRES_HOST: db
           POSTGRES_DB: postgres
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
