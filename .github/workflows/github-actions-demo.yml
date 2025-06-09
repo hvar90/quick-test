@@ -5,18 +5,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-          db:
-            image: postgres:latest
-            env:
-              POSTGRES_DB: "postgres"
-              POSTGRES_USER: "postgres"
-              POSTGRES_PASSWORD: "postgres"
-              CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-              CELERY_BROKER_URL: "redis://redis:6379/0"
-              REDIS_HOST: "redis" 
-            ports:
-              - 5432:5432
 
     steps:
       - uses: actions/checkout@v4.2.2
@@ -26,12 +14,12 @@ jobs:
         with:
           compose-file: "docker-compose.yml"
         env:
-          POSTGRES_DB: "postgres"
-          POSTGRES_USER: "postgres"
-          POSTGRES_PASSWORD: "postgres"
-          CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-          CELERY_BROKER_URL: "redis://redis:6379/0"
-          REDIS_HOST: "redis" 
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          CELERY_RESULT_BACKEND: redis://redis:6379/0
+          CELERY_BROKER_URL: redis://redis:6379/0
+          REDIS_HOST: redis
 
       - name: Execute tests in the running services
         run: |
