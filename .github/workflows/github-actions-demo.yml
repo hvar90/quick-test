@@ -23,20 +23,20 @@ jobs:
           
           
   steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+     - name: Checkout code
+       uses: actions/checkout@v3
 
-      - name: Set up Docker Compose
-        uses: docker/setup-compose@v2
+     - name: Set up Docker Compose
+       uses: docker/setup-compose@v2
 
-      - name: Start services
-        run: docker compose up -d
+     - name: Start services
+       run: docker compose up -d
 
-      - name: Run tests
-        run: docker compose run web python manage.py test
+     - name: Run tests
+       run: docker compose run web python manage.py test
 
-      - name: Stop services
-        run: docker compose down
+     - name: Stop services
+       run: docker compose down
           
 
     #steps:
