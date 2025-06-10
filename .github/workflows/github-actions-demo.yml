@@ -22,7 +22,7 @@ jobs:
           #- 5432:5432
           
           
-   steps:
+  steps:
      - name: Checkout code
        uses: actions/checkout@v3
 
@@ -37,7 +37,6 @@ jobs:
 
      - name: Stop services
        run: docker compose down
-          
 
     #steps:
       #- uses: actions/checkout@v4.2.2
