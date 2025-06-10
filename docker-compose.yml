@@ -4,12 +4,12 @@ services:
     restart: always
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
-      interval: 30s
-      retries: 5
-      start_period: 60s
-      timeout: 10s
+    #healthcheck:
+      #test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      #interval: 30s
+      #retries: 5
+      #start_period: 60s
+      #timeout: 10s
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
