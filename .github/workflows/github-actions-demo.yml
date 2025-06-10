@@ -40,4 +40,4 @@ jobs:
 
       - name: Execute tests in the running services
         run: |
-          sudo docker compose build
+          sudo docker compose run web python manage.py test
