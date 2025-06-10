@@ -40,4 +40,4 @@ jobs:
 
       - name: Execute tests in the running services
         run: |
-          sudo docker compose run web python manage.py test
+          sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
