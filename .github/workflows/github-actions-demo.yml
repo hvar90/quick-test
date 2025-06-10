@@ -16,13 +16,13 @@ jobs:
         uses: docker/setup-compose-action@v1
 
       - name: Start services
-        run: docker compose up -d
+        run: sudo docker compose up -d
 
       - name: Run tests
-        run: docker compose run web python manage.py test
+        run: sudo docker compose run web python manage.py test
 
       - name: Stop services
-        run: docker compose down
+        run: sudo docker compose down
 
 
 #name: Docker Compose Action
