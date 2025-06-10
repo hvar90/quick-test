@@ -5,11 +5,10 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      retries: 5
-      #start_period: 60s
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
       timeout: 5s
+      retries: 5
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -36,7 +35,7 @@ services:
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
-    restart: always
+    
     volumes:
       - .:/code
     ports:
@@ -54,6 +53,7 @@ services:
         #restart: true
       redis:
         condition: service_started
+    restart: always
       
       
       
