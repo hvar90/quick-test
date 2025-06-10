@@ -1,42 +1,69 @@
-name: Docker Compose Action
+name: Docker Compose CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    #services:
-      #db:
-        #image: postgres:latest
-        #env:
-          #POSTGRES_HOST: db
-          #POSTGRES_USER: postgres
-          #POSTGRES_PASSWORD: postgres
-          #POSTGRES_DB: postgres
-        #options: >-
-          #--health-cmd pg_isready
-          #--health-interval 10s
-          #--health-timeout 5s
-          #--health-retries 5
-        #ports:
-          #- 5432:5432
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Compose
+        uses: docker/setup-compose@v2
+
+      - name: Start services
+        run: docker compose up -d
+
+      - name: Run tests
+        run: docker compose run web python manage.py test
+
+      - name: Stop services
+        run: docker compose down
+
+
+#name: Docker Compose Action
+
+#on: [push]
+
+#jobs:
+  #build:
+    #runs-on: ubuntu-latest
+    ##services:
+      ##db:
+        ##image: postgres:latest
+        ##env:
+          ##POSTGRES_HOST: db
+          ##POSTGRES_USER: postgres
+          ##POSTGRES_PASSWORD: postgres
+          ##POSTGRES_DB: postgres
+        ##options: >-
+          ##--health-cmd pg_isready
+          ##--health-interval 10s
+          ##--health-timeout 5s
+          ##--health-retries 5
+        ##ports:
+          ##- 5432:5432
           
           
-  steps:
-     - name: Checkout code
-       uses: actions/checkout@v3
+  #steps:
+     #- name: Checkout code
+       #uses: actions/checkout@v3
 
-     - name: Set up Docker Compose
-       uses: docker/setup-compose@v2
+     #- name: Set up Docker Compose
+       #uses: docker/setup-compose@v2
 
-     - name: Start services
-       run: docker compose up -d
+     #- name: Start services
+       #run: docker compose up -d
 
-     - name: Run tests
-       run: docker compose run web python manage.py test
+     #- name: Run tests
+       #run: docker compose run web python manage.py test
 
-     - name: Stop services
-       run: docker compose down
+     #- name: Stop services
+       #run: docker compose down
 
     #steps:
       #- uses: actions/checkout@v4.2.2
