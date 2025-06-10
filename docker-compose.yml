@@ -1,5 +1,5 @@
 services:
-  db:
+  postgres:
     image: postgres
     restart: always
     volumes:
@@ -30,7 +30,7 @@ services:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - REDIS_HOST=redis
      depends_on:
-       - db
+       - postgres
        - redis
   web:
     build: .
@@ -48,7 +48,7 @@ services:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - REDIS_HOST=redis
     depends_on:
-      db:
+      postgres:
         condition: service_started
         restart: true
       redis:
