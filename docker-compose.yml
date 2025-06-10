@@ -35,7 +35,7 @@ services:
        - redis
   web:
     build: .
-    #command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
@@ -48,11 +48,9 @@ services:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - REDIS_HOST=redis
     depends_on:
-      db:
-        condition: service_healthy
-        restart: true
-      redis:
-        condition: service_started
+       - db
+       - redis
+       - celery
       
       
       
