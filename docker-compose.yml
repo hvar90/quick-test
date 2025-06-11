@@ -72,7 +72,7 @@ services:
     #restart: always
     
 networks:
-  network1:
+  host:
     name: host
     external: true
 #networks:
