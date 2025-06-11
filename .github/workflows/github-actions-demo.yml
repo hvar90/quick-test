@@ -106,24 +106,37 @@ jobs:
 
      #- name: Stop services
        #run: docker compose down
+       
+
+       
 
     steps:
-      - uses: actions/checkout@v4.2.2
+     - uses: adambirds/docker-compose-action@v1.5.0
+      with:
+        compose-file: "docker-compose.yml"
+        up-flags: "--build"
+        down-flags: "--volumes"
+        test-container: "web"
+        test-command: "python manage.py test"
+    
+    
+    
+      #- uses: actions/checkout@v4.2.2
 
-      - name: Run docker compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-        with:
-          compose-file: "docker-compose.yml"
-        #env:
-          #POSTGRES_HOST: "db"
-          #POSTGRES_PORT: 5432
-          #POSTGRES_DB: "postgres"
-          #POSTGRES_USER: "postgres"
-          #POSTGRES_PASSWORD: "postgres"
-          #CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-          #CELERY_BROKER_URL: "redis://redis:6379/0"
-          #REDIS_HOST: "redis"
+      #- name: Run docker compose
+        #uses: hoverkraft-tech/compose-action@v2.0.1
+        #with:
+          #compose-file: "docker-compose.yml"
+        ##env:
+          ##POSTGRES_HOST: "db"
+          ##POSTGRES_PORT: 5432
+          ##POSTGRES_DB: "postgres"
+          ##POSTGRES_USER: "postgres"
+          ##POSTGRES_PASSWORD: "postgres"
+          ##CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+          ##CELERY_BROKER_URL: "redis://redis:6379/0"
+          ##REDIS_HOST: "redis"
 
-      - name: Execute tests in the running services
-        run: |
-          sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
+      #- name: Execute tests in the running services
+        #run: |
+          #sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
