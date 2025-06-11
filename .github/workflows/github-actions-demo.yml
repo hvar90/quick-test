@@ -102,7 +102,7 @@ jobs:
       run: docker compose up -d
 
     - name: Run tests
-      run: docker compose run web python manage.py test
+      run: docker compose exec web python manage.py test
 
     - name: Stop services
       run: docker compose down
