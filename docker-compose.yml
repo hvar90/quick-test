@@ -2,7 +2,7 @@ services:
   db:
     image: postgres
     networks:
-      - my_network
+      - my-host-network
     #restart: always
     
     volumes:
@@ -22,14 +22,14 @@ services:
   redis: 
      image: redis:6.2-alpine
      networks:
-       - my_network
+       - my-host-network
      ports:
        - '6379:6379' 
   
   celery:
      build: .
      networks:
-       - my_network
+       - my-host-network
      command: celery -b redis://redis:6379/0 -A quicktest worker -l debug 
      environment:
       - POSTGRES_DB=postgres
@@ -45,7 +45,7 @@ services:
   web:
     build: .
     networks:
-      - my_network
+      - my-host-network
     command: python manage.py runserver 0.0.0.0:8000
   
     volumes:
@@ -71,13 +71,13 @@ services:
         #condition: service_started
     #restart: always
     
-networks:
-  my_network:
-    name: quick-test_default
-    external: true
 #networks:
-  #my-bridge-network:
-    #driver: bridge
+  #my_network:
+    #name: quick-test_default
+    #external: true
+networks:
+  my-host-network:
+    driver: host
     #driver_opts:
       #com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
   
