@@ -1,8 +1,8 @@
 services:
   db:
     image: postgres
-    networks:
-      - my-bridge-network
+    #networks:
+      #- my-bridge-network
     #restart: always
     
     volumes:
@@ -21,8 +21,8 @@ services:
     
   redis: 
      image: redis:6.2-alpine
-     networks:
-       - my-bridge-network
+     #networks:
+       #- my-bridge-network
      ports:
        - '6379:6379' 
   
@@ -44,8 +44,8 @@ services:
      
   web:
     build: .
-    networks:
-      - my-bridge-network
+    #networks:
+      #- my-bridge-network
     command: python manage.py runserver 0.0.0.0:8000
   
     volumes:
@@ -72,9 +72,9 @@ services:
     #restart: always
     
 
-networks:
-  my-bridge-network:
-    driver: bridge
+#networks:
+  #my-bridge-network:
+    #driver: bridge
     #driver_opts:
       #com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
   
