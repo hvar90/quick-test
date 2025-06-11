@@ -43,10 +43,7 @@ services:
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
-    
-    networks:
-      - my-bridge-network
-    
+  
     volumes:
       - .:/code
     ports:
