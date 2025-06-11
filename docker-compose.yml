@@ -22,7 +22,7 @@ services:
   redis: 
      image: redis:6.2-alpine
      networks:
-       -host
+       - host
      ports:
        - '6379:6379' 
   
