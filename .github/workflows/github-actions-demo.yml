@@ -117,6 +117,11 @@ jobs:
       
     - name: list of networks
       run: docker network ls
+      
+    - name: list of containers
+      run: docker ps
+      
+      #docker exec <container_name> ls -l
 
     - name: Run tests
       run: docker compose run web python manage.py test 
