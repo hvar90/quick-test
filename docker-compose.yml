@@ -69,7 +69,7 @@ services:
         #restart: true
       #redis:
         #condition: service_started
-    restart: always
+    #restart: always
     
 
 #networks:
