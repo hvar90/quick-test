@@ -73,7 +73,7 @@ services:
     
 networks:
   my_network:
-    name: bridge
+    name: quick-test_default
     external: true
 #networks:
   #my-bridge-network:
