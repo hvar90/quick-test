@@ -1,8 +1,9 @@
 services:
   db:
     image: postgres
-    networks:
-      - host
+    network_mode: "host"
+    #networks:
+     # - host
     #restart: always
     
     volumes:
@@ -21,15 +22,17 @@ services:
     
   redis: 
      image: redis:6.2-alpine
-     networks:
-       - host
+     network_mode: "host"
+     #networks:
+       #- host
      ports:
        - '6379:6379' 
   
   celery:
      build: .
-     networks:
-       - host
+     network_mode: "host"
+     #networks:
+       #- host
      command: celery -b redis://redis:6379/0 -A quicktest worker -l debug 
      environment:
       - POSTGRES_DB=postgres
@@ -44,8 +47,9 @@ services:
      
   web:
     build: .
-    networks:
-      - host
+    network_mode: "host"
+    #networks:
+      #- host
     command: python manage.py runserver 0.0.0.0:8000
   
     volumes:
