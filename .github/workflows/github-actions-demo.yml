@@ -1,94 +1,94 @@
-name: Docker Compose CI
+#name: Docker Compose CI
 
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  # Label of the runner job
-  runner-job:
-    # You must use a Linux environment when using service containers or container jobs
-    runs-on: ubuntu-latest
-
-    ## Service containers to run with `runner-job`
-    #services:
-      ## Label used to access the service container
-      #postgres:
-        ## Docker Hub image
-        #image: postgres
-        ## Provide the password for postgres
-        #env:
-          #POSTGRES_DB: "postgres"
-          #POSTGRES_USER: "postgres"
-          #POSTGRES_PASSWORD: "postgres"
-          ## The hostname used to communicate with the PostgreSQL service container
-          #POSTGRES_HOST: localhost
-          ## The default PostgreSQL port
-          #POSTGRES_PORT: 5432
-        ## Set health checks to wait until postgres has started
-        #options: >-
-          #--health-cmd pg_isready
-          #--health-interval 10s
-          #--health-timeout 5s
-          #--health-retries 5
-        ##ports:
-          ### Maps tcp port 5432 on service container to the host
-          ##- 5432:5432
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Docker Compose
-        uses: docker/setup-compose-action@v1
-
-      - name: Start services
-        run: sudo docker compose up -d
-        
-      - name: slee
-      - uses: GuillaumeFalourd/wait-sleep-action@v1
-        with:
-            time: '10' # for 60 seconds
-        #run: sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
-
-      - name: Run tests
-        run: sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
-
-      - name: Stop services
-        run: sudo docker compose down
-    env:
-        # The hostname used to communicate with the PostgreSQL service container
-        POSTGRES_HOST: localhost
-        # The default PostgreSQL port
-        POSTGRES_PORT: 5432
-        POSTGRES_DB: "postgres"
-        POSTGRES_USER: "postgres"
-        POSTGRES_PASSWORD: "postgres"
-        CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-        CELERY_BROKER_URL: "redis://redis:6379/0"
-        REDIS_HOST: "redis"
-#name: Docker Compose Action
-
-#on: [push]
+#on:
+  #push:
+    #branches:
+      #- main
 
 #jobs:
-  #build:
+  ## Label of the runner job
+  #runner-job:
+    ## You must use a Linux environment when using service containers or container jobs
     #runs-on: ubuntu-latest
+
+    ### Service containers to run with `runner-job`
     ##services:
-      ##db:
-        ##image: postgres:latest
+      ### Label used to access the service container
+      ##postgres:
+        ### Docker Hub image
+        ##image: postgres
+        ### Provide the password for postgres
         ##env:
-          ##POSTGRES_HOST: db
-          ##POSTGRES_USER: postgres
-          ##POSTGRES_PASSWORD: postgres
-          ##POSTGRES_DB: postgres
+          ##POSTGRES_DB: "postgres"
+          ##POSTGRES_USER: "postgres"
+          ##POSTGRES_PASSWORD: "postgres"
+          ### The hostname used to communicate with the PostgreSQL service container
+          ##POSTGRES_HOST: localhost
+          ### The default PostgreSQL port
+          ##POSTGRES_PORT: 5432
+        ### Set health checks to wait until postgres has started
         ##options: >-
           ##--health-cmd pg_isready
           ##--health-interval 10s
           ##--health-timeout 5s
           ##--health-retries 5
-        ##ports:
-          ##- 5432:5432
+        ###ports:
+          #### Maps tcp port 5432 on service container to the host
+          ###- 5432:5432
+    #steps:
+      #- name: Checkout code
+        #uses: actions/checkout@v3
+
+      #- name: Set up Docker Compose
+        #uses: docker/setup-compose-action@v1
+
+      #- name: Start services
+        #run: sudo docker compose up -d
+        
+      #- name: slee
+      #- uses: GuillaumeFalourd/wait-sleep-action@v1
+        #with:
+            #time: '10' # for 60 seconds
+        ##run: sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
+
+      #- name: Run tests
+        #run: sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
+
+      #- name: Stop services
+        #run: sudo docker compose down
+    #env:
+        ## The hostname used to communicate with the PostgreSQL service container
+        #POSTGRES_HOST: localhost
+        ## The default PostgreSQL port
+        #POSTGRES_PORT: 5432
+        #POSTGRES_DB: "postgres"
+        #POSTGRES_USER: "postgres"
+        #POSTGRES_PASSWORD: "postgres"
+        #CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+        #CELERY_BROKER_URL: "redis://redis:6379/0"
+        #REDIS_HOST: "redis"
+name: Docker Compose Action
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    #services:
+      #db:
+        #image: postgres:latest
+        #env:
+          #POSTGRES_HOST: db
+          #POSTGRES_USER: postgres
+          #POSTGRES_PASSWORD: postgres
+          #POSTGRES_DB: postgres
+        #options: >-
+          #--health-cmd pg_isready
+          #--health-interval 10s
+          #--health-timeout 5s
+          #--health-retries 5
+        #ports:
+          #- 5432:5432
           
           
   #steps:
@@ -107,23 +107,23 @@ jobs:
      #- name: Stop services
        #run: docker compose down
 
-    #steps:
-      #- uses: actions/checkout@v4.2.2
+    steps:
+      - uses: actions/checkout@v4.2.2
 
-      #- name: Run docker compose
-        #uses: hoverkraft-tech/compose-action@v2.0.1
-        #with:
-          #compose-file: "docker-compose.yml"
-        ##env:
-          ##POSTGRES_HOST: "db"
-          ##POSTGRES_PORT: 5432
-          ##POSTGRES_DB: "postgres"
-          ##POSTGRES_USER: "postgres"
-          ##POSTGRES_PASSWORD: "postgres"
-          ##CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-          ##CELERY_BROKER_URL: "redis://redis:6379/0"
-          ##REDIS_HOST: "redis"
+      - name: Run docker compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "docker-compose.yml"
+        #env:
+          #POSTGRES_HOST: "db"
+          #POSTGRES_PORT: 5432
+          #POSTGRES_DB: "postgres"
+          #POSTGRES_USER: "postgres"
+          #POSTGRES_PASSWORD: "postgres"
+          #CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+          #CELERY_BROKER_URL: "redis://redis:6379/0"
+          #REDIS_HOST: "redis"
 
-      #- name: Execute tests in the running services
-        #run: |
-          #sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
+      - name: Execute tests in the running services
+        run: |
+          sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
