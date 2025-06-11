@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres
-    network_mode: "host"
+    #network_mode: "host"
     #networks:
      # - host
     #restart: always
@@ -22,15 +22,15 @@ services:
     
   redis: 
      image: redis:6.2-alpine
-     network_mode: "host"
+     #network_mode: "host"
      #networks:
        #- host
-     #ports:
-       #- '6379:6379' 
+     ports:
+       - '6379:6379' 
   
   celery:
      build: .
-     network_mode: "host"
+     #network_mode: "host"
      #networks:
        #- host
      command: celery -b redis://redis:6379/0 -A quicktest worker -l debug 
