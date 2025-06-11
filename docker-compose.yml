@@ -21,8 +21,8 @@ services:
     
   redis: 
      image: redis:6.2-alpine
-     #networks:
-       #- my-bridge-network
+     networks:
+       - my-bridge-network
      ports:
        - '6379:6379' 
   
