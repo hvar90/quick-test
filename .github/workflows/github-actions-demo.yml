@@ -91,26 +91,26 @@ jobs:
           #- 5432:5432
           
           
-  #steps:
-     #- name: Checkout code
-       #uses: actions/checkout@v3
+  steps:
+     - name: Checkout code
+       uses: actions/checkout@v3
 
-     #- name: Set up Docker Compose
-       #uses: docker/setup-compose@v2
+     - name: Set up Docker Compose
+       uses: docker/setup-compose@v2
 
-     #- name: Start services
-       #run: docker compose up -d
+     - name: Start services
+       run: docker compose up -d
 
-     #- name: Run tests
-       #run: docker compose run web python manage.py test
+     - name: Run tests
+       run: docker compose run web python manage.py test
 
-     #- name: Stop services
-       #run: docker compose down
+     - name: Stop services
+       run: docker compose down
        
 
        
 
-    steps:
+    #steps:
      ## Check out the repository
      #- uses: actions/checkout@v4
 
@@ -124,22 +124,22 @@ jobs:
     
     
     
-      - uses: actions/checkout@v4.2.2
+      #- uses: actions/checkout@v4.2.2
 
-      - name: Run docker compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-        with:
-          compose-file: "docker-compose.yml"
-        #env:
-          #POSTGRES_HOST: "db"
-          #POSTGRES_PORT: 5432
-          #POSTGRES_DB: "postgres"
-          #POSTGRES_USER: "postgres"
-          #POSTGRES_PASSWORD: "postgres"
-          #CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-          #CELERY_BROKER_URL: "redis://redis:6379/0"
-          #REDIS_HOST: "redis"
+      #- name: Run docker compose
+        #uses: hoverkraft-tech/compose-action@v2.0.1
+        #with:
+          #compose-file: "docker-compose.yml"
+        ##env:
+          ##POSTGRES_HOST: "db"
+          ##POSTGRES_PORT: 5432
+          ##POSTGRES_DB: "postgres"
+          ##POSTGRES_USER: "postgres"
+          ##POSTGRES_PASSWORD: "postgres"
+          ##CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+          ##CELERY_BROKER_URL: "redis://redis:6379/0"
+          ##REDIS_HOST: "redis"
 
-      - name: Execute tests in the running services
-        run: |
-          sudo docker compose exec web python manage.py wait_for_db && sudo docker compose run web python manage.py test
+      #- name: Execute tests in the running services
+        #run: |
+          #sudo docker compose exec web python manage.py wait_for_db && sudo docker compose run web python manage.py test
