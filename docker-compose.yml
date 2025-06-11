@@ -1,8 +1,8 @@
 services:
   db:
     image: postgres
-    #networks:
-      #- my-bridge-network
+    networks:
+      - host
     #restart: always
     
     volumes:
@@ -21,15 +21,15 @@ services:
     
   redis: 
      image: redis:6.2-alpine
-     #networks:
-       #- my-bridge-network
+     networks:
+       -host
      ports:
        - '6379:6379' 
   
   celery:
      build: .
-     #networks:
-      # - my-bridge-network
+     networks:
+       - host
      command: celery -b redis://redis:6379/0 -A quicktest worker -l debug 
      environment:
       - POSTGRES_DB=postgres
@@ -44,8 +44,8 @@ services:
      
   web:
     build: .
-    #networks:
-      #- my-bridge-network
+    networks:
+      - host
     command: python manage.py runserver 0.0.0.0:8000
   
     volumes:
@@ -71,7 +71,10 @@ services:
         #condition: service_started
     #restart: always
     
-
+networks:
+  network1:
+    name: host
+    external: true
 #networks:
   #my-bridge-network:
     #driver: bridge
