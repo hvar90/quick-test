@@ -61,11 +61,14 @@ services:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - REDIS_HOST=redis
     depends_on:
-      db:
-        condition: service_started
-        restart: true
-      redis:
-        condition: service_started
+     - db
+     - redis
+    #depends_on:
+      #db:
+        #condition: service_started
+        #restart: true
+      #redis:
+        #condition: service_started
     restart: always
     
 
