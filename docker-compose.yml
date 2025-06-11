@@ -68,11 +68,11 @@ services:
         condition: service_started
     restart: always
     
-    
-  networks:
-    my-bridge-network:
-      driver: bridge
-      
-      
+
+networks:
+  my-bridge-network:
+    driver: bridge
+  
+  
       
    
