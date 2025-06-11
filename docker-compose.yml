@@ -71,7 +71,6 @@ services:
 
 networks:
   my-bridge-network:
-    external: true
     driver: bridge
   
   
