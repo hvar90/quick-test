@@ -44,9 +44,13 @@ jobs:
 
       - name: Start services
         run: sudo docker compose up -d
+        
+      - name: slee
+      - uses: GuillaumeFalourd/wait-sleep-action@v1
+        with:
+          time: '60' # for 60 seconds
 
       - name: Run tests
-        sleep 10
         run: sudo docker compose run web python manage.py wait_for_db && sudo docker compose run web python manage.py test
 
       - name: Stop services
