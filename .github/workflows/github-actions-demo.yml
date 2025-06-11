@@ -111,8 +111,12 @@ jobs:
     - name: Start services
       run: docker compose up -d
       
-    - name: Wait for the container to be ready
-      run: sleep 10
+   # - name: Wait for the container to be ready
+      #run: sleep 10
+      
+      
+    - name: list of networks
+      run: docker network ls
 
     - name: Run tests
       run: docker compose run web python manage.py test
