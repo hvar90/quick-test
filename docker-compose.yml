@@ -16,8 +16,8 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    #ports:
-      #- "5432:5432"
+    ports:
+      - "5432:5432"
     
   redis: 
      image: redis:6.2-alpine
@@ -53,7 +53,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - POSTGRES_HOST=db
+      - POSTGRES_HOST=localhost
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
