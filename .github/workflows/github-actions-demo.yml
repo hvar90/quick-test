@@ -111,8 +111,8 @@ jobs:
     - name: Start services
       run: docker compose up -d
       
-   # - name: Wait for the container to be ready
-      #run: sleep 10
+    - name: Wait for the container to be ready
+      run: sleep 10
       
       
     - name: list of networks
