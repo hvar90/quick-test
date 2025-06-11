@@ -119,7 +119,7 @@ jobs:
       run: docker network ls
 
     - name: Run tests
-      run: docker compose run --network quick-test_default web python manage.py test 
+      run: docker compose run --network=quick-test_default web python manage.py test 
 
     - name: Stop services
       run: docker compose down
