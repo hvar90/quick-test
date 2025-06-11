@@ -3,21 +3,21 @@ services:
     image: postgres
     #networks:
      # - my-bridge-network
-    restart: always
+    #restart: always
     
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    #healthcheck:
+      #test: ["CMD-SHELL", "pg_isready"]
+      #interval: 10s
+      #timeout: 5s
+      #retries: 5
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    ports:
-      - "5432:5432"
+    #ports:
+      #- "5432:5432"
     
   redis: 
      image: redis:6.2-alpine
@@ -72,9 +72,9 @@ services:
     restart: always
     
 
-networks:
-  my-bridge-network:
-    driver: bridge
+#networks:
+  #my-bridge-network:
+    #driver: bridge
     #driver_opts:
       #com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
   
