@@ -94,15 +94,23 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      
+    - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
     - name: Set up Docker Compose
       uses: docker/setup-compose-action@v1
 
     - name: Start services
       run: docker compose up -d
+      
+    - name: Wait for the container to be ready
+      run: sleep 10
 
     - name: Run tests
-      run: docker compose exec web python manage.py test
+      run: docker compose run web python manage.py test
 
     - name: Stop services
       run: docker compose down
