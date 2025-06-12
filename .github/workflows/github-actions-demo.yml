@@ -124,7 +124,7 @@ jobs:
     - name: list of containers
       run: docker ps
       
-   - name: logs db
+    - name: logs db
       run: docker container logs quick-test-db-1
       
       #docker exec <container_name> ls -l
