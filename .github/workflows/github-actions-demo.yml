@@ -115,19 +115,19 @@ jobs:
    #   uses: docker/setup-compose-action@v1
    
     - name: Build and push image with caching
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          tags: |
-            ${{ github.repository }}:${{ github.sha }}
-          cache: true
-          # Optionally use push_on_success for auto-push on build
-          # push_on_success: true
-          push: false # Set to true for pushing to a registry
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        tags: |
+          ${{ github.repository }}:${{ github.sha }}
+        cache: true
+        # Optionally use push_on_success for auto-push on build
+        # push_on_success: true
+        push: false # Set to true for pushing to a registry
 
-          # Enable and configure caching for Docker Layers
-          cache-from: type=gha,key=${{ github.ref_name }}
-          cache-to: type=gha,key=${{ github.ref_name }},mode=min,scope=default
+        # Enable and configure caching for Docker Layers
+        cache-from: type=gha,key=${{ github.ref_name }}
+        cache-to: type=gha,key=${{ github.ref_name }},mode=min,scope=default
   
 
     - name: Start services
