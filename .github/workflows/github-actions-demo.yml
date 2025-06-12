@@ -120,6 +120,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         #context: "{{defaultContext}"
+        file: ./Dockerfile
         context: .
         tags: user/app:latest
         #tags: |
