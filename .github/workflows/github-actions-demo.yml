@@ -119,7 +119,7 @@ jobs:
     - name: Build and push image with caching
       uses: docker/build-push-action@v5
       with:
-        #context: .
+        context: .
         tags: user/app:latest
         #tags: |
           #${{ github.repository }}:${{ github.sha }}
