@@ -98,8 +98,8 @@ jobs:
           
           
     steps:
-    #- name: Checkout code
-      #uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
       
     #- name: Set up Python
       #uses: actions/setup-python@v4
@@ -120,8 +120,8 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         #context: "{{defaultContext}"
-        file: ./Dockerfile
-        context: .
+        #file: ./Dockerfile
+        #context: .
         tags: user/app:latest
         #tags: |
           #${{ github.repository }}:${{ github.sha }}
@@ -131,8 +131,8 @@ jobs:
         push: false # Set to true for pushing to a registry
 
         # Enable and configure caching for Docker Layers
-        cache-from: type=gha,key=${{ github.ref_name }}
-        cache-to: type=gha,key=${{ github.ref_name }},mode=min,scope=default
+        #cache-from: type=gha,key=${{ github.ref_name }}
+        #cache-to: type=gha,key=${{ github.ref_name }},mode=min,scope=default
   
 
     - name: Start services
