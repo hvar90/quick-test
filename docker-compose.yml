@@ -7,7 +7,8 @@ services:
     #restart: always
     
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - ./home/runner/work/quick-test/quick-test/data/db:/var/lib/postgresql/data
+      #- ./data/db:/var/lib/postgresql/data
     #healthcheck:
       #test: ["CMD-SHELL", "pg_isready"]
       #interval: 10s
