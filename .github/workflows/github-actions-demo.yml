@@ -126,7 +126,7 @@ jobs:
         #cache: true
         # Optionally use push_on_success for auto-push on build
         # push_on_success: true
-        push: true # Set to true for pushing to a registry
+        push: false # Set to true for pushing to a registry
 
         # Enable and configure caching for Docker Layers
         #cache-from: type=gha,key=${{ github.ref_name }}
