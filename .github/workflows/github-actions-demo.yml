@@ -121,8 +121,8 @@ jobs:
       with:
         #context: .
         tags: user/app:latest
-        tags: |
-          ${{ github.repository }}:${{ github.sha }}
+        #tags: |
+          #${{ github.repository }}:${{ github.sha }}
         #cache: true
         # Optionally use push_on_success for auto-push on build
         # push_on_success: true
