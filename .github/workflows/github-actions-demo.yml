@@ -75,10 +75,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-    container:
-     image: docker/compose
-     volumes:
-       - /github/workspace/data/db:/var/lib/postgresql/data  # Map the workspace directory to the container path
+    #container:
+     #image: docker/compose
+     #volumes:
+       #- /github/workspace/data/db:/var/lib/postgresql/data  # Map the workspace directory to the container path
        #- my_volume:/app/shared # Use the same named volume
     #services:
       #db:
@@ -120,8 +120,8 @@ jobs:
     - name: Start db
       run: docker compose up -d db
       
-    - name: Wait for the container to be ready
-      run: sleep 10
+   # - name: Wait for the container to be ready
+      #run: sleep 10
       
       
     - name: list of networks
