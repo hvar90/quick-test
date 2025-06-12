@@ -129,8 +129,8 @@ jobs:
         push: false # Set to true for pushing to a registry
 
         # Enable and configure caching for Docker Layers
-        #cache-from: type=gha,key=${{ github.ref_name }}
-        #cache-to: type=gha,key=${{ github.ref_name }},mode=min,scope=default
+        cache-from: type=gha,key=${{ github.ref_name }}
+        cache-to: type=gha,key=${{ github.ref_name }},mode=min,scope=default
   
 
     - name: Start services
