@@ -123,6 +123,8 @@ jobs:
         #file: ./Dockerfile
         #context: .
         tags: user/app:latest
+        cache-from: type=registry,ref=user/app:latest
+        cache-to: type=inline
         #tags: |
           #${{ github.repository }}:${{ github.sha }}
         #cache: true
