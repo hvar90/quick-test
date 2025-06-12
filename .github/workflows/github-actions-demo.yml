@@ -137,10 +137,16 @@ jobs:
     - name: list volumes
       run: docker volume ls
       
-      #docker exec <container_name> ls -l
+    - name: GITHUB_WORKSPACE 
+      run: |
+          echo ${{ github.workspace }}
+          echo $GITHUB_WORKSPACE
+      
+    
 
     - name: Run tests
       #run: docker compose run web --mount type=volume,source=$GITHUB_WORKSPACE/data/db,target=/var/lib/postgresql/data python manage.py test 
+      run: docker compose run web --mount type=volume,source=$GITHUB_WORKSPACE/data/db,target=/var/lib/postgresql/data python manage.py test 
       run: docker compose run web python manage.py test 
 
    # - name: Stop services
