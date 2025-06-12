@@ -113,6 +113,8 @@ jobs:
 
     #- name: Set up Docker Compose
       #uses: docker/setup-compose-action@v1
+    - name: Set up Docker Compose
+      uses: docker/setup-compose@v2
 
     - name: Start services
       run: docker compose up -d
@@ -139,8 +141,8 @@ jobs:
       #docker exec <container_name> ls -l
 
     - name: Run tests
-      run: docker compose run web --mount type=volume,source=./data/db,target=/var/lib/postgresql/data python manage.py test 
-      #run: docker compose run web python manage.py test 
+      #run: docker compose run web --mount type=volume,source=$GITHUB_WORKSPACE/data/db,target=/var/lib/postgresql/data python manage.py test 
+      run: docker compose run web python manage.py test 
 
    # - name: Stop services
       #run: docker compose down
