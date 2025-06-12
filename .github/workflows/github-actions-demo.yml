@@ -74,6 +74,12 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    container:
+     image: postgres
+     volumes:
+       - /github/workspace/data/db:/var/lib/postgresql/data  # Map the workspace directory to the container path
+       #- my_volume:/app/shared # Use the same named volume
     #services:
       #db:
         #image: postgres:latest
